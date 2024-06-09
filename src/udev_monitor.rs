@@ -138,13 +138,7 @@ pub fn launch_tasks(
                 Path::new(&event_device),
                 config_list.clone(),
             )));
-            let reader = EventReader::new(
-                config_list.clone(),
-                stream,
-                modifiers.clone(),
-                modifier_was_activated.clone(),
-                environment.clone(),
-            );
+            let reader = EventReader::new( config_list.clone(), stream, modifiers.clone(), modifier_was_activated.clone(), environment.clone(),);
             tasks.push(tokio::spawn(start_reader(reader)));
             devices_found += 1
         }
